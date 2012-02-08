@@ -6,8 +6,8 @@ SPEC = Gem::Specification.new do |spec|
   spec.author = "J. Wostenberg"
   spec.summary = "Create XML or HTML pages using only Ruby."
   spec.description = "Generate XML or HTML documents using only Ruby without having to worry about syntax."
-  spec.homepage = "github.com/awostenberg/Rubified"
-  spec.platform = Gem::Platform::Ruby
+  spec.homepage = "http://github.com/awostenberg/Rubified"
+  spec.platform = Gem::Platform::RUBY
   spec.require_paths << "lib"
   spec.files = "lib/rubified.rb"
 end
