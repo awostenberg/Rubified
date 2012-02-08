@@ -1,7 +1,7 @@
-===Rubified===
+===Rubified
 
-==What is this?==
+==What is this?
 Rubified is a simple way to create XML or HTML documents without actually having to write any of either (you can if you'd really like to though)!
 
-==How do I use this?==
+==How do I use this?
 Basically, you can't yet. It has no functionality as of this writing. Expect it to work soon!
