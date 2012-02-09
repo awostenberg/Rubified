@@ -9,5 +9,9 @@ SPEC = Gem::Specification.new do |spec|
   spec.homepage = "http://github.com/awostenberg/Rubified"
   spec.platform = Gem::Platform::RUBY
   spec.require_paths << "lib"
-  spec.files = "lib/rubified.rb"
+  lib_files = %w[
+    tag.rb
+  ]
+  lib_files.collect! {|f| "lib/rubified/" + f}
+  spec.files = lib_files << "lib/rubified.rb"
 end
