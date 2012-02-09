@@ -1,7 +1,24 @@
-===Rubified
+=Say Hello to Rubified
 
 ==What is this?
-Rubified is a simple way to create XML or HTML documents without actually having to write any of either (you can if you'd really like to though)!
+Rubified is a simple way to create XML or HTML documents without actually
+having to write any of either (you can if you'd really like to though)!
 
 ==How do I use this?
-Basically, you can't yet. It has no functionality as of this writing. Expect it to work soon!
+Currently, there are no tag classes, so create on with +Rubified::Tag.new_tag+
+and pass the name as the parameter. Example to create HTML's <div> tag:
+  Rubified::Tag.new(:div)
+Then use it like this:
+  Div.new({:id=>"foo", :class=>"bar"}).to_html
+This generates:
+  <div id="foo" class="bar"></div>
+Currently, all tags will add a closing pair; this will be fixed. It's not a bug.
+Also, keep in mind that you can't actually add elements in between other
+elements. This will happen later sometime soon.
+
+==To do list (in no particular order):
+*Pre-fill library with HTML tags
+*Add the ability to specify wether or not a particular tag needs a closing pair
+*Instead of directly creating new instances of tags and rendering them, add a Canvas
+  class to do this
+*Make embedding elements possible (using blocks)
