@@ -1,5 +1,6 @@
 module Rubified
+  require 'ext/object'
   require 'rubified/tag'
   require 'rubified/tags'
-  require 'ext/object'
+  require 'rubified/canvas'
 end

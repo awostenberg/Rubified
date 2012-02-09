@@ -12,6 +12,7 @@ SPEC = Gem::Specification.new do |spec|
   lib_files = %w[
     tag
     tags
+    canvas
   ]
   lib_files.collect! {|f| "lib/rubified/" + f + ".rb"}
   spec.files = lib_files << "lib/rubified.rb" << "lib/ext/object.rb"

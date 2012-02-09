@@ -13,7 +13,7 @@ class Rubified::Tag
   end
 
   # The arguments to this method is a hash key of the parameters to the HTML tag.
-  def initialize(params)
+  def initialize(params={})
     # The name of the tag, e.g. font
     @tname = self.class.to_s.split("::").last.downcase
     # Any parameters of this tag, e.g. if you have the HTML tag:
