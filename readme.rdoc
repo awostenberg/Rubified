@@ -7,7 +7,7 @@ having to write any of either (you can if you'd really like to though)!
 ==How do I use this?
 Currently, there are no tag classes, so create one with Rubified::Tag.new_tag
 and pass the name as the parameter. Example to create HTML's <div> tag:
-  Rubified::Tag.new(:div)
+  Rubified::Tag.new_tag(:div)
 Then use it like this:
   Div.new({:id=>"foo", :class=>"bar"}).to_html
 This generates:
