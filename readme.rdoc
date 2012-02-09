@@ -5,7 +5,7 @@ Rubified is a simple way to create XML or HTML documents without actually
 having to write any of either (you can if you'd really like to though)!
 
 ==How do I use this?
-Currently, there are no tag classes, so create on with +Rubified::Tag.new_tag+
+Currently, there are no tag classes, so create one with Rubified::Tag.new_tag
 and pass the name as the parameter. Example to create HTML's <div> tag:
   Rubified::Tag.new(:div)
 Then use it like this:
