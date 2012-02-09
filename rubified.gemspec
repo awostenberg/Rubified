@@ -14,5 +14,5 @@ SPEC = Gem::Specification.new do |spec|
     tags
   ]
   lib_files.collect! {|f| "lib/rubified/" + f + ".rb"}
-  spec.files = lib_files << "lib/rubified.rb"
+  spec.files = lib_files << "lib/rubified.rb" << "lib/ext/object.rb"
 end

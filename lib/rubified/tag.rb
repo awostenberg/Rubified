@@ -8,6 +8,7 @@ class Rubified::Tag
     newbie = Class.new(self)
     remove_const(:Name)
     const_set(name.capitalize, newbie)
+    newbie.const_set(:Paired, paired)
     newbie
   end
 
@@ -25,6 +26,13 @@ class Rubified::Tag
   def to_html
     pstring = ""
     @params.each {|key, val| pstring << " #{key}=\"#{val}\""}
-    "<#{@tname}#{pstring}></#{@tname}>"
+    result = "<#{@tname}#{pstring}>"
+    if block_given?
+      result << yield.to_html
+    end
+    if self.class::Paired
+      result << "</#{@tname}>"
+    end
+    result
   end
 end
