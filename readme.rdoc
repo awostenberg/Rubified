@@ -17,8 +17,7 @@ Also, keep in mind that you can't actually add elements in between other
 elements. This will happen later sometime soon.
 
 ==To do list (in no particular order):
-*Pre-fill library with HTML tags
-*Add the ability to specify wether or not a particular tag needs a closing pair
-*Instead of directly creating new instances of tags and rendering them, add a Canvas
-  class to do this
-*Make embedding elements possible (using blocks)
+* Pre-fill library with HTML tags
+* Add the ability to specify wether or not a particular tag needs a closing pair
+* Instead of directly creating new instances of tags and rendering them, add a Canvas class to do this
+* Make embedding elements possible (using blocks)
