@@ -12,7 +12,7 @@ Then use it like this:
   Div.new({:id=>"foo", :class=>"bar"}).to_html
 This generates:
   <div id="foo" class="bar"></div>
-You can also put other elements or text inside tags. This is done by putting the
+You can also get other elements or text inside tags. This is done by putting the
 object inside a block after the to_html method. Note that if a tag doesn't have
 an ending pair (like <img>), it will go after. For example:
   Div.new({:id=>"foo", :class=>"bar"}).to_html {"Hello world!"}
@@ -36,8 +36,6 @@ exists! This is some code for a small, but valid HTML page:
       img({:src=>"images/smiley.jpg", :alt=>"smiley"}) {"*Happy face*"}
     }
   }
-NOTE: the current implementation of Rubified::Canvas doesn't actually work in
-Ruby 1.9.2 due to a bug in the MRE: http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/35386
 
 ==To do list (in no particular order):
 * [SOMEWHAT] Pre-fill library with HTML tags
@@ -45,5 +43,5 @@ Ruby 1.9.2 due to a bug in the MRE: http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb
 * Instead of directly creating new instances of tags and rendering them, add a
   Canvas class to do this
 * [DONE] Make embedding elements possible (using blocks)
-* [0%] Figure out another way to dynamically define methods on Rubified::Canvas (the current way doesn't
+* [DONE] Figure out another way to dynamically define methods on Rubified::Canvas (the current way doesn't
   work in Ruby MRE 1.9.2 due to a bug: http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/35386
