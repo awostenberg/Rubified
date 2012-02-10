@@ -47,8 +47,7 @@ module Rubified
       eval "
         def #{n}(params={}, &block)
           # Determine what class to use by the method name.
-          puts #{tclass}
-          tagclass = Tag::#{tclass}
+          tagclass = #{tclass}
           # Create a new tag then convert it.
           tagclass.new(params).to_html(&block)
         end
