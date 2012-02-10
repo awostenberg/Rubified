@@ -12,9 +12,32 @@ Then use it like this:
   Div.new({:id=>"foo", :class=>"bar"}).to_html
 This generates:
   <div id="foo" class="bar"></div>
-Currently, all tags will add a closing pair; this will be fixed. It's not a bug.
-Also, keep in mind that you can't actually add elements in between other
-elements. This will happen later sometime soon.
+You can also put other elements or text inside tags. This is done by putting the
+object inside a block after the to_html method. Note that if a tag doesn't have
+an ending pair (like <img>), it will go after. For example:
+  Div.new({:id=>"foo", :class=>"bar"}).to_html {"Hello world!"}
+“But that's so much to type,” you may ask. Yes, it is. That's why the Canvas module
+exists! This is some code for a small, but valid HTML page:
+  include Rubified::Canvas
+  html {
+    head {
+      # A simple page title
+      title {"Generated with Rubified"}
+    }
+    # Here's the real content
+    body {
+      #                                     v v v
+      # Remember, you can substitute str-   | | |
+      # ings for tags inside element blocks V V V
+      div({:id=>"foo", :class=>"bar"}) {"Hello world!"}
+      # Slap on an image                                   v v v
+      # This text will go after the image (no ending       | | |
+      # tag)                                               V V V
+      img({:src=>"images/smiley.jpg", :alt=>"smiley"}) {"*Happy face*"}
+    }
+  }
+NOTE: the current implementation of Rubified::Canvas doesn't actually work in
+Ruby 1.9.2 due to a bug in the MRE: http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/35386
 
 ==To do list (in no particular order):
 * [SOMEWHAT] Pre-fill library with HTML tags
@@ -22,3 +45,5 @@ elements. This will happen later sometime soon.
 * Instead of directly creating new instances of tags and rendering them, add a
   Canvas class to do this
 * [DONE] Make embedding elements possible (using blocks)
+* [0%] Figure out another way to dynamically define methods on Rubified::Canvas (the current way doesn't
+  work in Ruby MRE 1.9.2 due to a bug: http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/35386
