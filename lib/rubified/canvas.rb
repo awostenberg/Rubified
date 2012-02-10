@@ -34,7 +34,8 @@ module Rubified
     # Add a method for a specific XML/HTML tag class.
     def self.add_tag_method(tclass)
       n = tclass.to_s.split("::").last.downcase
-      puts n
+      #puts n
+=begin
       define_method(n) do |params={}, &block|
         # Figure out what class to use by the method name.
         #puts __method__
@@ -42,6 +43,16 @@ module Rubified
         # Create a new tag then run it
         tagclass.new(params).to_html(&block)
       end
+=end
+      eval "
+        def #{n}(params={}, &block)
+          # Determine what class to use by the method name.
+          puts #{tclass}
+          tagclass = Tag::#{tclass}
+          # Create a new tag then convert it.
+          tagclass.new(params).to_html(&block)
+        end
+       "
     end
   end
 end
