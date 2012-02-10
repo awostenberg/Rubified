@@ -31,9 +31,13 @@ module Rubified
   #    </body>
   #  </html
   module Canvas
+    # Add a method for a specific XML/HTML tag class.
     def self.add_tag_method(tclass)
-      define_method(tclass.to_s.split("::").last.downcase) do |params={}, &block|
+      n = tclass.to_s.split("::").last.downcase
+      puts n
+      define_method(n) do |params={}, &block|
         # Figure out what class to use by the method name.
+        #puts __method__
         tagclass = Rubified::Tag.const_get((__method__).capitalize)
         # Create a new tag then run it
         tagclass.new(params).to_html(&block)

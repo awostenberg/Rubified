@@ -2,11 +2,7 @@ class Rubified::Tag
   # Create and returns a new tag class with the name +name+. To create a tag that
   # does NOT use a matched pair, set paired to false. Tags like <img> need this.
   def self.new_tag(name, paired=true)
-    # Store the new tag's name in a constant; the block to create the new class
-    # won't keep local variables. A bit of a cheat
-    const_set(:Name, name)
     newbie = Class.new(self)
-    remove_const(:Name)
     const_set(name.capitalize, newbie)
     newbie.const_set(:Paired, paired)
     newbie

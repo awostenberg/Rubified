@@ -1,4 +1,4 @@
-# Pre-load a small list of HTML tags.
+# The list of HTML tags. It's not complete.
 tags = {
     :html=>true,
     :head=>true,
@@ -15,5 +15,9 @@ tags = {
 }
 
 tags.each {|tag, paired|
-  Rubified::Tag.new_tag(tag, paired)
+  # First, create a new class for this tag.
+  newbie = Rubified::Tag.new_tag(tag, paired)
+  # Then create a corresponding method for it.
+  puts newbie
+  Rubified::Canvas.add_tag_method(newbie)
 }
