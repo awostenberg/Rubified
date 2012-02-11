@@ -24,8 +24,7 @@ class Rubified::Tag
     @params.each {|key, val| pstring << " #{key}=\"#{val}\""}
     raw = "<#{@tname}#{pstring}>\n"
     if block_given?
-      r = (yield.to_html(true))# << "\n")
-      raw << r
+      raw << (yield.to_html(true))
     end
     if self.class::Paired
       raw << "</#{@tname}>\n"
