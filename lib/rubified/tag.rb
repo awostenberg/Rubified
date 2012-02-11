@@ -9,26 +9,27 @@ class Rubified::Tag
   end
 
   # The arguments to this method is a hash key of the parameters to the HTML tag.
-  def initialize(params={})
+  def initialize(params={}, embedded=false)
     # The name of the tag, e.g. font
     @tname = self.class.to_s.split("::").last.downcase
     # Any parameters of this tag, e.g. if you have the HTML tag:
     #   <div id="foo" class="bar">
     # then the parameters would be +id+ and +class+.
-    @params = params
+    @params, @embedded = params, embedded
   end
 
   # Dumps this tag to an HTML string.
-  def to_html
+  def to_html(embedded)
     pstring = ""
     @params.each {|key, val| pstring << " #{key}=\"#{val}\""}
-    result = "<#{@tname}#{pstring}>"
+    raw = "<#{@tname}#{pstring}>\n"
     if block_given?
-      result << yield.to_html
+      r = (yield.to_html(true))# << "\n")
+      raw << r
     end
     if self.class::Paired
-      result << "</#{@tname}>"
+      raw << "</#{@tname}>\n"
     end
-    result
+    raw
   end
 end

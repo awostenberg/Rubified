@@ -45,11 +45,11 @@ module Rubified
       end
 =end
       eval "
-        def #{n}(params={}, &block)
+        def #{n}(params={}, embedded=false, &block)
           # Determine what class to use by the method name.
           tagclass = #{tclass}
           # Create a new tag then convert it.
-          tagclass.new(params).to_html(&block)
+          tagclass.new(params).to_html(embedded, &block)
         end
        "
     end
