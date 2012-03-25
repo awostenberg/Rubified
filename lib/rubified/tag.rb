@@ -21,11 +21,14 @@ class Rubified::Tag
   # Dumps this tag to an HTML string.
   def to_html(embedded)
     pstring = ""
+    # Encode the parameters.
     @params.each {|key, val| pstring << " #{key}=\"#{val}\""}
     raw = "<#{@tname}#{pstring}>\n"
+    # Insert another element (should be a string).
     if block_given?
       raw << (yield.to_html(true))
     end
+    # Add an ending tag if needed.
     if self.class::Paired
       raw << "</#{@tname}>\n"
     end

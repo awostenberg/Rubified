@@ -1,5 +1,6 @@
 module Rubified
-  # Used to shorten the creation of tags; just include or extend this module to use it.
+  # Used to shorten the creation of tags; just include or extend this module to use it. Fine,
+  # you can use it directly. But that wouldn't be the nicest way ;)
   # A small HTML page without Canvas:
   #  Rubified::Tag::Html.new.to_html {
   #    Rubified::Tag::Head.new.to_html {
