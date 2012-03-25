@@ -2,12 +2,14 @@
 
 ==What is this?
 Rubified is a simple way to create XML or HTML documents without actually
-having to write any of either (you can if you'd really like to though)!
+having to write any of either (though you can if you'd really like to),
+inspired by {Smalltalk's Seaside}[http://www.seaside.st/], where you build
+websites with no HTML around for miles.
 
 ==How do I use this?
 Currently, not all HTML tag classes exist, so you can create missing ones
-with Tag::new_tag and pass the name as the parameter.
-  Rubified::Tag.new_tag(:div)
+with Rubified::new_tag and pass the name as the parameter.
+  Rubified.new_tag(:div)
 Then use it like this:
   Div.new({:id=>"foo", :class=>"bar"}).to_html
 This generates:
@@ -16,8 +18,8 @@ You can also get other elements or text inside tags. This is done by putting the
 object inside a block after the to_html method. Note that if a tag doesn't have
 an ending pair (like <img>), it will go after. For example:
   Div.new({:id=>"foo", :class=>"bar"}).to_html {"Hello world!"}
-“But that's so much to type,” you may ask. Yes, it is. That's why the Canvas module
-exists! This is some code for a small, but valid HTML page:
+“But that's so much to type,” you may say. Yes, it is. That's why the Canvas module
+exists! Here's some code for a small, but valid HTML page utilizing it:
   include Rubified::Canvas
   html {
     head {
@@ -26,22 +28,23 @@ exists! This is some code for a small, but valid HTML page:
     }
     # Here's the real content
     body {
-      #                                     v v v
-      # Remember, you can substitute str-   | | |
-      # ings for tags inside element blocks V V V
-      div({:id=>"foo", :class=>"bar"}) {"Hello world!"}
+      #                                     v v v       v
+      # Remember, you can substitute str-   | | | Don't | forget
+      # ings for tags inside element blocks V V V the   V plus!
+      div({:id=>"foo", :class=>"bar"}) {"Hello world!"} +
       # Slap on an image                                   v v v
       # This text will go after the image (no ending       | | |
       # tag)                                               V V V
       img({:src=>"images/smiley.jpg", :alt=>"smiley"}) {"*Happy face*"}
     }
   }
+When creating a new tag via Rubified.new_tag, it will automatically define a corresponding
+method on Rubified::Canvas to use.
 
 ==To do list (in no particular order):
-* [SOMEWHAT] Pre-fill library with HTML tags
+* [SOMEWHAT DONE] Pre-fill library with HTML tags
 * [DONE] Add the ability to specify wether or not a particular tag needs a closing pair
-* Instead of directly creating new instances of tags and rendering them, add a
+* [DONE] Instead of directly creating new instances of tags and rendering them, add a
   Canvas class to do this
 * [DONE] Make embedding elements possible (using blocks)
-* [DONE] Figure out another way to dynamically define methods on Rubified::Canvas (the current way doesn't
-  work in Ruby MRE 1.9.2 due to a bug: http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/35386
+* [DONE] Figure out another way to dynamically define methods on Rubified::Canvas (the best/easiest way doesn't work in Ruby MRE 1.9.2 {due to a bug}[http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/35386].
