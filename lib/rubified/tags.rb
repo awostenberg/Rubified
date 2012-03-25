@@ -1,4 +1,4 @@
-# A list of HTML tags. It's not complete.
+# A list of HTML tags in no particular order. It's not complete.
 tags = {
     :html=>true,
     :head=>true,
@@ -16,10 +16,33 @@ tags = {
     :h2=>true,
     :h3=>true,
     :h4=>true,
+    :h5=>true,
+    :h6=>true,
+    :form=>true,
+    :button=>true,
+    :base=>true,
+    :em=>true,
+    :strong=>true,
+    :dfn=>true,
+    :code=>true,
+    :samp=>true,
+    :kbd=>true,
+    :var=>true,
+    :cite=>true,
+    :del=>true,
+    :ins=>true,
+    :applet=>true,
+    :object=>true,
+    :menu=>true,
+    :table=>true,
+    :pre=>true,
+    :col=>true,
+    :area=>true,
 
     :img=>false,
     :br=>false,
-    :link=>false
+    :link=>false,
+    :hr=>false
 }
 
 tags.each {|tag, paired|
